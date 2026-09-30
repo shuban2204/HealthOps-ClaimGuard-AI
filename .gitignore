@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.pyc
+*.db
+node_modules/
+dist/
+coverage/
+frontend/dist/
+ml/artifacts/*.joblib
+ml/artifacts/*.json
+!ml/artifacts/.gitkeep
+
