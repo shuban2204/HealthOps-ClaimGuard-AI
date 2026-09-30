@@ -5,11 +5,11 @@ __pycache__/
 .mypy_cache/
 *.pyc
 *.db
+data/raw/
 node_modules/
 dist/
 coverage/
 frontend/dist/
 ml/artifacts/*.joblib
-ml/artifacts/*.json
 !ml/artifacts/.gitkeep
-
+!ml/artifacts/*.json

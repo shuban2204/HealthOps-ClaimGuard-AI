@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "forbidden_target_or_post_outcome_features_used": [],
+  "aggregate_feature_review": [
+    "Provider and beneficiary claim frequency features are generated from prior claims ordered by claim_start_date.",
+    "Provider average amount is an expanding prior mean and does not use future rows.",
+    "historical_provider_denial_rate is synthetic provider profile risk generated before the denied label.",
+    "denial_reason is generated after the target and excluded from model inputs.",
+    "Final threshold is selected on validation data, not test data."
+  ],
+  "manual_review_required_before_real_world_use": true
+}

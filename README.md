@@ -1,89 +1,66 @@
 # HealthOps ClaimGuard AI
 
-Explainable ML, unusual-claim detection, and evidence-grounded analyst briefs for healthcare claims operations.
+Explainable ML and unusual-claim detection for healthcare claims review prioritization.
 
 ## What It Does
 
-- Scores synthetic healthcare claims for denial risk.
+- Scores a hybrid CMS DE-SynPUF plus synthetic administrative dataset for denial-risk review prioritization.
 - Assigns LOW, MEDIUM, or HIGH risk bands.
 - Shows model drivers for claim-level explainability.
 - Flags unusual claims with Isolation Forest.
-- Retrieves relevant policy snippets from a local knowledge base.
-- Generates a grounded analyst brief with source IDs and a human-review disclaimer.
+- Separates public claims-derived fields from synthetic operational enrichment.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  A[React Dashboard] --> B[FastAPI]
-  B --> C[ML Classifier]
-  B --> D[Isolation Forest]
-  B --> E[Policy Retrieval]
-  E --> F[Markdown Policies]
-  B --> G[Synthetic CSV]
+  A[CMS DE-SynPUF Outpatient] --> B[Normalization]
+  C[Beneficiary Summary] --> B
+  B --> D[Synthetic Administrative Enrichment]
+  D --> E[ML Training]
+  E --> F[Risk Model]
+  E --> G[Unusual Claim Detector]
 ```
 
-## Local Setup
+## Data Setup
+
+Download CMS DE-SynPUF Sample 1 outpatient claims and optional 2008 beneficiary summary into `data/raw/`.
+
+CMS Sample 1 page:
+https://www.cms.gov/data-research/statistics-trends-and-reports/medicare-claims-synthetic-public-use-files/cms-2008-2010-data-entrepreneurs-synthetic-public-use-file-de-synpuf/de10-sample-1
+
+Expected local files:
 
 ```bash
-python -m pip install -r backend/requirements.txt
-python ml/generate_data.py
+data/raw/DE1_0_2008_to_2010_Outpatient_Claims_Sample_1.zip
+data/raw/DE1_0_2008_Beneficiary_Summary_File_Sample_1.zip
+```
+
+## Train
+
+```bash
+python -m pip install -r ml/requirements.txt
+python ml/generate_data.py --limit-rows 50000
 python ml/train.py
-set PYTHONPATH=backend;.
-uvicorn app.main:app --reload --app-dir backend
 ```
 
-In another terminal:
+Outputs are written under `ml/artifacts/`.
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+## Reports
 
-Open `http://localhost:5173`.
-
-## Docker
-
-```bash
-docker compose up --build
-```
-
-Frontend: `http://localhost:5173`  
-Backend docs: `http://localhost:8000/docs`
-
-## Tests
-
-```bash
-set PYTHONPATH=backend;.
-pytest backend/tests -q
-cd frontend
-npm run build
-```
-
-## API
-
-- `GET /api/v1/health`
-- `GET /api/v1/claims`
-- `GET /api/v1/claims/{claim_id}`
-- `POST /api/v1/claims/upload`
-- `GET /api/v1/analytics/summary`
-- `GET /api/v1/analytics/drivers`
-- `GET /api/v1/claims/{claim_id}/evidence`
-- `POST /api/v1/claims/{claim_id}/brief`
-- `GET /api/v1/model/metrics`
+- `ml/artifacts/data_diagnostics.json`
+- `ml/artifacts/metrics.json`
+- `ml/artifacts/explainability_samples.json`
+- `ml/artifacts/leakage_audit.json`
 
 ## Project Structure
 
 ```text
-backend/   FastAPI application and tests
-data/      Synthetic claims CSV and policy documents
-docs/      Architecture, model, responsible AI, and demo notes
-frontend/  React + Vite analyst UI
-ml/        Synthetic data generation and model training
+data/      Raw CMS files are local only; processed claims CSV is generated
+docs/      Architecture, model, responsible AI, and data provenance notes
+ml/        CMS ingestion, administrative enrichment, diagnostics, and training
 ```
 
 ## Responsible AI
 
-This project uses synthetic data only. It does not provide medical advice, diagnose conditions, or autonomously deny claims. Analyst briefs are decision support and must be verified by a human reviewer using source systems and payer policy.
-
+This project uses CMS synthetic public claims plus synthetic administrative fields. It does not provide medical advice, diagnose conditions, or autonomously deny claims. Outputs are decision support and must be verified by a human reviewer.

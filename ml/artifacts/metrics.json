@@ -1,0 +1,264 @@
+{
+  "model_version": "hybrid-cms-admin-0.2.0",
+  "data_source": "CMS DE-SynPUF Sample 1 outpatient claims plus synthetic administrative enrichment",
+  "row_count": 49199,
+  "features": [
+    "claim_type",
+    "provider_network",
+    "beneficiary_sex",
+    "procedure_category",
+    "diagnosis_category",
+    "prior_auth_required",
+    "prior_auth_present",
+    "documentation_complete",
+    "coding_mismatch_flag",
+    "duplicate_claim_flag",
+    "member_coverage_active",
+    "timely_filing_flag",
+    "high_claim_amount_flag",
+    "high_provider_frequency_flag",
+    "multi_physician_flag",
+    "complex_claim_flag",
+    "missing_required_auth",
+    "late_submission_flag",
+    "high_provider_denial_rate_flag",
+    "network_and_auth_risk",
+    "documentation_or_coding_issue",
+    "complex_claim_and_high_amount",
+    "claim_duration_days",
+    "diagnosis_count",
+    "procedure_count",
+    "claim_payment_amount",
+    "claim_total_charge",
+    "deductible_amount",
+    "reimbursement_ratio",
+    "unique_physician_count",
+    "unique_diagnosis_count",
+    "unique_procedure_count",
+    "beneficiary_age",
+    "provider_avg_claim_amount",
+    "provider_claim_frequency",
+    "beneficiary_claim_frequency",
+    "claim_amount_vs_provider_mean",
+    "claim_amount_vs_global_mean",
+    "claim_amount_zscore",
+    "days_since_previous_claim_for_beneficiary",
+    "historical_provider_denial_rate",
+    "billed_to_allowed_ratio",
+    "provider_risk_interaction"
+  ],
+  "target": "denied",
+  "threshold": 0.2729,
+  "baseline_logistic_regression": {
+    "threshold": 0.4962,
+    "validation": {
+      "roc_auc": 0.7235,
+      "pr_auc": 0.5634,
+      "precision": 0.4925,
+      "recall": 0.6067,
+      "f1": 0.5437,
+      "precision_at_top_10pct": 0.7205,
+      "recall_at_top_10pct": 0.2505,
+      "positive_prevalence": 0.2876,
+      "confusion_matrix": {
+        "tn": 5241,
+        "fp": 1769,
+        "fn": 1113,
+        "tp": 1717
+      }
+    },
+    "test": {
+      "roc_auc": 0.7167,
+      "pr_auc": 0.5537,
+      "precision": 0.48,
+      "recall": 0.6025,
+      "f1": 0.5343,
+      "precision_at_top_10pct": 0.7053,
+      "recall_at_top_10pct": 0.2452,
+      "positive_prevalence": 0.2876,
+      "confusion_matrix": {
+        "tn": 5163,
+        "fp": 1847,
+        "fn": 1125,
+        "tp": 1705
+      }
+    }
+  },
+  "primary_model": {
+    "name": "xgboost",
+    "train": {
+      "roc_auc": 0.7614,
+      "pr_auc": 0.6218,
+      "precision": 0.4906,
+      "recall": 0.6638,
+      "f1": 0.5642,
+      "precision_at_top_10pct": 0.7821,
+      "recall_at_top_10pct": 0.2719,
+      "positive_prevalence": 0.2876,
+      "confusion_matrix": {
+        "tn": 15180,
+        "fp": 5850,
+        "fn": 2854,
+        "tp": 5635
+      }
+    },
+    "validation": {
+      "roc_auc": 0.7324,
+      "pr_auc": 0.5672,
+      "precision": 0.4868,
+      "recall": 0.6463,
+      "f1": 0.5553,
+      "precision_at_top_10pct": 0.7215,
+      "recall_at_top_10pct": 0.2509,
+      "positive_prevalence": 0.2876,
+      "confusion_matrix": {
+        "tn": 5082,
+        "fp": 1928,
+        "fn": 1001,
+        "tp": 1829
+      }
+    },
+    "test": {
+      "roc_auc": 0.725,
+      "pr_auc": 0.5646,
+      "precision": 0.4756,
+      "recall": 0.629,
+      "f1": 0.5416,
+      "precision_at_top_10pct": 0.7093,
+      "recall_at_top_10pct": 0.2466,
+      "positive_prevalence": 0.2876,
+      "confusion_matrix": {
+        "tn": 5047,
+        "fp": 1963,
+        "fn": 1050,
+        "tp": 1780
+      }
+    }
+  },
+  "old_stage2_metrics": {
+    "roc_auc": 0.764,
+    "pr_auc": 0.5934,
+    "f1": 0.5941,
+    "precision_at_top_10pct": 0.7014
+  },
+  "global_importance": [
+    {
+      "feature": "missing_required_auth",
+      "importance": 0.124909
+    },
+    {
+      "feature": "documentation_or_coding_issue",
+      "importance": 0.082198
+    },
+    {
+      "feature": "prior_auth_present",
+      "importance": 0.060539
+    },
+    {
+      "feature": "member_coverage_active",
+      "importance": 0.027477
+    },
+    {
+      "feature": "provider_network_in_network",
+      "importance": 0.020435
+    },
+    {
+      "feature": "provider_network_out_of_network",
+      "importance": 0.019969
+    },
+    {
+      "feature": "documentation_complete",
+      "importance": 0.016436
+    },
+    {
+      "feature": "timely_filing_flag",
+      "importance": 0.015947
+    },
+    {
+      "feature": "coding_mismatch_flag",
+      "importance": 0.015877
+    },
+    {
+      "feature": "complex_claim_flag",
+      "importance": 0.014586
+    },
+    {
+      "feature": "procedure_category_A46",
+      "importance": 0.012193
+    },
+    {
+      "feature": "claim_total_charge",
+      "importance": 0.010817
+    },
+    {
+      "feature": "claim_amount_vs_global_mean",
+      "importance": 0.010699
+    },
+    {
+      "feature": "prior_auth_required",
+      "importance": 0.008672
+    },
+    {
+      "feature": "duplicate_claim_flag",
+      "importance": 0.007556
+    },
+    {
+      "feature": "claim_amount_zscore",
+      "importance": 0.007004
+    },
+    {
+      "feature": "procedure_count",
+      "importance": 0.006948
+    },
+    {
+      "feature": "days_since_previous_claim_for_beneficiary",
+      "importance": 0.005762
+    },
+    {
+      "feature": "complex_claim_and_high_amount",
+      "importance": 0.005616
+    },
+    {
+      "feature": "diagnosis_category_787",
+      "importance": 0.005563
+    },
+    {
+      "feature": "claim_duration_days",
+      "importance": 0.005469
+    },
+    {
+      "feature": "procedure_category_735",
+      "importance": 0.005104
+    },
+    {
+      "feature": "provider_risk_interaction",
+      "importance": 0.005094
+    },
+    {
+      "feature": "diagnosis_category_721",
+      "importance": 0.004923
+    },
+    {
+      "feature": "diagnosis_category_112",
+      "importance": 0.004826
+    }
+  ],
+  "leakage_audit": {
+    "status": "pass",
+    "forbidden_target_or_post_outcome_features_used": [],
+    "aggregate_feature_review": [
+      "Provider and beneficiary claim frequency features are generated from prior claims ordered by claim_start_date.",
+      "Provider average amount is an expanding prior mean and does not use future rows.",
+      "historical_provider_denial_rate is synthetic provider profile risk generated before the denied label.",
+      "denial_reason is generated after the target and excluded from model inputs.",
+      "Final threshold is selected on validation data, not test data."
+    ],
+    "manual_review_required_before_real_world_use": true
+  },
+  "notes": [
+    "Validation data selects the decision threshold.",
+    "Test data is held out until final evaluation.",
+    "denial_reason and denied are excluded from model inputs.",
+    "Unusual claim detection is not a fraud detector."
+  ]
+}

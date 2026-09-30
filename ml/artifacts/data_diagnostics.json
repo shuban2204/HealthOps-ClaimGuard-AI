@@ -1,0 +1,393 @@
+{
+  "row_count": 49199,
+  "positive_class_prevalence": 0.2876,
+  "missing_value_percentages": {
+    "operating_physician_id": 82.9184,
+    "denial_reason": 71.2413,
+    "other_physician_id": 67.7676,
+    "primary_procedure": 4.5529,
+    "attending_physician_id": 2.2561,
+    "claim_start_date": 1.4228,
+    "claim_end_date": 1.4228,
+    "member_age": 1.4228,
+    "primary_diagnosis": 0.6748,
+    "coding_mismatch_flag": 0.0,
+    "denied": 0.0,
+    "synthetic_denial_probability": 0.0,
+    "historical_provider_denial_rate": 0.0,
+    "duplicate_claim_flag": 0.0,
+    "claim_id": 0.0,
+    "timely_filing_flag": 0.0,
+    "member_coverage_active": 0.0,
+    "documentation_complete": 0.0,
+    "prior_auth_present": 0.0,
+    "prior_auth_required": 0.0,
+    "provider_network": 0.0,
+    "billed_amount": 0.0,
+    "payer": 0.0,
+    "procedure_category": 0.0,
+    "diagnosis_category": 0.0,
+    "complex_claim_flag": 0.0,
+    "allowed_amount_estimate": 0.0,
+    "days_from_service_to_submission": 0.0,
+    "missing_required_auth": 0.0,
+    "billed_to_allowed_ratio": 0.0
+  },
+  "numeric_summary": {
+    "claim_duration_days": {
+      "count": 49199.0,
+      "mean": 2.3697,
+      "std": 4.6406,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 1.0,
+      "max": 21.0
+    },
+    "diagnosis_count": {
+      "count": 49199.0,
+      "mean": 2.8819,
+      "std": 2.041,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 4.0,
+      "max": 10.0
+    },
+    "procedure_count": {
+      "count": 49199.0,
+      "mean": 4.7865,
+      "std": 7.1787,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 5.0,
+      "max": 50.0
+    },
+    "claim_payment_amount": {
+      "count": 49199.0,
+      "mean": 284.8347,
+      "std": 568.2886,
+      "min": 0.0,
+      "25%": 40.0,
+      "50%": 80.0,
+      "75%": 200.0,
+      "max": 3300.0
+    },
+    "claim_total_charge": {
+      "count": 49199.0,
+      "mean": 382.6783,
+      "std": 699.6633,
+      "min": 10.0,
+      "25%": 60.0,
+      "50%": 110.0,
+      "75%": 380.0,
+      "max": 17600.0
+    },
+    "deductible_amount": {
+      "count": 49199.0,
+      "mean": 2.8488,
+      "std": 15.7527,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 200.0
+    },
+    "reimbursement_ratio": {
+      "count": 49199.0,
+      "mean": 0.7453,
+      "std": 0.2912,
+      "min": 0.0,
+      "25%": 0.6,
+      "50%": 0.8333,
+      "75%": 1.0,
+      "max": 1.0
+    },
+    "unique_physician_count": {
+      "count": 49199.0,
+      "mean": 1.2255,
+      "std": 0.5013,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 1.0,
+      "max": 3.0
+    },
+    "unique_diagnosis_count": {
+      "count": 49199.0,
+      "mean": 2.8635,
+      "std": 2.0326,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 4.0,
+      "max": 10.0
+    },
+    "unique_procedure_count": {
+      "count": 49199.0,
+      "mean": 3.6102,
+      "std": 4.1013,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 5.0,
+      "max": 39.0
+    },
+    "beneficiary_age": {
+      "count": 49199.0,
+      "mean": 73.2903,
+      "std": 12.7886,
+      "min": 25.0,
+      "25%": 68.0,
+      "50%": 74.0,
+      "75%": 82.0,
+      "max": 102.0
+    },
+    "provider_avg_claim_amount": {
+      "count": 49199.0,
+      "mean": 367.4584,
+      "std": 301.4043,
+      "min": 10.0,
+      "25%": 216.6667,
+      "50%": 325.7143,
+      "75%": 422.6667,
+      "max": 9450.0
+    },
+    "provider_claim_frequency": {
+      "count": 49199.0,
+      "mean": 34.6437,
+      "std": 63.7257,
+      "min": 0.0,
+      "25%": 3.0,
+      "50%": 12.0,
+      "75%": 38.0,
+      "max": 623.0
+    },
+    "beneficiary_claim_frequency": {
+      "count": 49199.0,
+      "mean": 7.7821,
+      "std": 7.4944,
+      "min": 0.0,
+      "25%": 2.0,
+      "50%": 6.0,
+      "75%": 11.0,
+      "max": 60.0
+    },
+    "claim_amount_vs_provider_mean": {
+      "count": 49199.0,
+      "mean": 1.7289,
+      "std": 5.941,
+      "min": 0.003,
+      "25%": 0.1717,
+      "50%": 0.434,
+      "75%": 1.3647,
+      "max": 320.0
+    },
+    "claim_amount_vs_global_mean": {
+      "count": 49199.0,
+      "mean": 1.0519,
+      "std": 1.9234,
+      "min": 0.0142,
+      "25%": 0.1647,
+      "50%": 0.3089,
+      "75%": 1.0162,
+      "max": 48.6113
+    },
+    "claim_amount_zscore": {
+      "count": 49199.0,
+      "mean": -0.0,
+      "std": 1.0,
+      "min": -0.5327,
+      "25%": -0.4612,
+      "50%": -0.3897,
+      "75%": -0.0038,
+      "max": 24.6083
+    },
+    "days_since_previous_claim_for_beneficiary": {
+      "count": 49199.0,
+      "mean": 176.4595,
+      "std": 314.9084,
+      "min": 0.0,
+      "25%": 17.0,
+      "50%": 46.0,
+      "75%": 118.0,
+      "max": 999.0
+    },
+    "historical_provider_denial_rate": {
+      "count": 49199.0,
+      "mean": 0.1714,
+      "std": 0.0449,
+      "min": 0.01,
+      "25%": 0.144,
+      "50%": 0.172,
+      "75%": 0.201,
+      "max": 0.367
+    },
+    "billed_to_allowed_ratio": {
+      "count": 49199.0,
+      "mean": 5.7431,
+      "std": 90.226,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 1.2,
+      "75%": 1.6667,
+      "max": 15100.0
+    },
+    "provider_risk_interaction": {
+      "count": 49199.0,
+      "mean": 0.302,
+      "std": 1.0941,
+      "min": 0.0003,
+      "25%": 0.0276,
+      "50%": 0.0707,
+      "75%": 0.228,
+      "max": 68.67
+    }
+  },
+  "categorical_cardinalities": {
+    "claim_type": 1,
+    "provider_network": 2,
+    "beneficiary_sex": 2,
+    "procedure_category": 405,
+    "diagnosis_category": 846
+  },
+  "denial_rate_by": {
+    "prior_authorization_status": [
+      {
+        "value": "False",
+        "count": 44706,
+        "denial_rate": 0.2503
+      },
+      {
+        "value": "True",
+        "count": 4493,
+        "denial_rate": 0.6581
+      }
+    ],
+    "network_status": [
+      {
+        "value": "in_network",
+        "count": 42810,
+        "denial_rate": 0.2675
+      },
+      {
+        "value": "out_of_network",
+        "count": 6389,
+        "denial_rate": 0.4224
+      }
+    ],
+    "documentation_status": [
+      {
+        "value": "False",
+        "count": 7352,
+        "denial_rate": 0.4818
+      },
+      {
+        "value": "True",
+        "count": 41847,
+        "denial_rate": 0.2535
+      }
+    ],
+    "coding_mismatch": [
+      {
+        "value": "False",
+        "count": 45460,
+        "denial_rate": 0.2652
+      },
+      {
+        "value": "True",
+        "count": 3739,
+        "denial_rate": 0.5592
+      }
+    ],
+    "filing_status": [
+      {
+        "value": "False",
+        "count": 40247,
+        "denial_rate": 0.2702
+      },
+      {
+        "value": "True",
+        "count": 8952,
+        "denial_rate": 0.3658
+      }
+    ],
+    "claim_complexity_bucket": [
+      {
+        "value": "low",
+        "count": 15678,
+        "denial_rate": 0.244
+      },
+      {
+        "value": "medium",
+        "count": 20444,
+        "denial_rate": 0.2661
+      },
+      {
+        "value": "high",
+        "count": 13077,
+        "denial_rate": 0.3733
+      }
+    ],
+    "claim_amount_bucket": [
+      {
+        "value": "q1_low",
+        "count": 12300,
+        "denial_rate": 0.2331
+      },
+      {
+        "value": "q2",
+        "count": 12300,
+        "denial_rate": 0.2658
+      },
+      {
+        "value": "q3",
+        "count": 12299,
+        "denial_rate": 0.2743
+      },
+      {
+        "value": "q4_high",
+        "count": 12300,
+        "denial_rate": 0.3772
+      }
+    ]
+  },
+  "feature_target_association": {
+    "procedure_category": 1.0,
+    "diagnosis_category": 1.0,
+    "network_and_auth_risk": 0.5153,
+    "missing_required_auth": 0.4078,
+    "prior_auth_present": 0.3576,
+    "member_coverage_active": 0.3345,
+    "complex_claim_and_high_amount": 0.313,
+    "coding_mismatch_flag": 0.294,
+    "high_claim_amount_flag": 0.2685,
+    "documentation_or_coding_issue": 0.2589,
+    "documentation_complete": 0.2283,
+    "duplicate_claim_flag": 0.1716,
+    "claim_total_charge": 0.1573,
+    "claim_amount_zscore": 0.1573,
+    "claim_amount_vs_global_mean": 0.1564,
+    "provider_network": 0.155,
+    "claim_payment_amount": 0.1492,
+    "procedure_count": 0.1315,
+    "prior_auth_required": 0.1158,
+    "claim_duration_days": 0.1029,
+    "unique_procedure_count": 0.0976,
+    "timely_filing_flag": 0.0957,
+    "complex_claim_flag": 0.0945,
+    "provider_risk_interaction": 0.0844,
+    "claim_amount_vs_provider_mean": 0.0779,
+    "unique_diagnosis_count": 0.0762,
+    "diagnosis_count": 0.0758,
+    "days_since_previous_claim_for_beneficiary": 0.0732,
+    "historical_provider_denial_rate": 0.0688,
+    "late_submission_flag": 0.0477
+  },
+  "split_sizes": {
+    "train": 29519,
+    "validation": 9840,
+    "test": 9840
+  }
+}

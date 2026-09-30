@@ -1,0 +1,282 @@
+{
+  "shap_status": "computed",
+  "shap_summary": [
+    {
+      "feature": "missing_required_auth",
+      "mean_abs_shap": 0.424565
+    },
+    {
+      "feature": "documentation_or_coding_issue",
+      "mean_abs_shap": 0.328575
+    },
+    {
+      "feature": "provider_network_in_network",
+      "mean_abs_shap": 0.172935
+    },
+    {
+      "feature": "procedure_count",
+      "mean_abs_shap": 0.065476
+    },
+    {
+      "feature": "coding_mismatch_flag",
+      "mean_abs_shap": 0.062857
+    },
+    {
+      "feature": "historical_provider_denial_rate",
+      "mean_abs_shap": 0.061126
+    },
+    {
+      "feature": "days_since_previous_claim_for_beneficiary",
+      "mean_abs_shap": 0.052787
+    },
+    {
+      "feature": "member_coverage_active",
+      "mean_abs_shap": 0.04838
+    },
+    {
+      "feature": "claim_amount_vs_global_mean",
+      "mean_abs_shap": 0.040748
+    },
+    {
+      "feature": "provider_network_out_of_network",
+      "mean_abs_shap": 0.037115
+    },
+    {
+      "feature": "documentation_complete",
+      "mean_abs_shap": 0.033466
+    },
+    {
+      "feature": "prior_auth_present",
+      "mean_abs_shap": 0.030613
+    },
+    {
+      "feature": "timely_filing_flag",
+      "mean_abs_shap": 0.023148
+    },
+    {
+      "feature": "claim_duration_days",
+      "mean_abs_shap": 0.021212
+    },
+    {
+      "feature": "claim_total_charge",
+      "mean_abs_shap": 0.019129
+    },
+    {
+      "feature": "provider_risk_interaction",
+      "mean_abs_shap": 0.012569
+    },
+    {
+      "feature": "procedure_category_364",
+      "mean_abs_shap": 0.011205
+    },
+    {
+      "feature": "reimbursement_ratio",
+      "mean_abs_shap": 0.009333
+    },
+    {
+      "feature": "provider_claim_frequency",
+      "mean_abs_shap": 0.009323
+    },
+    {
+      "feature": "duplicate_claim_flag",
+      "mean_abs_shap": 0.008429
+    }
+  ],
+  "sample_claims": [
+    {
+      "claim_id": 542132280975011,
+      "denial_probability": 0.1394,
+      "risk_band": "LOW",
+      "top_local_factors": [
+        {
+          "feature": "documentation_or_coding_issue",
+          "shap": -0.228919
+        },
+        {
+          "feature": "missing_required_auth",
+          "shap": -0.167983
+        },
+        {
+          "feature": "provider_network_in_network",
+          "shap": -0.092807
+        },
+        {
+          "feature": "procedure_count",
+          "shap": -0.06985
+        },
+        {
+          "feature": "days_since_previous_claim_for_beneficiary",
+          "shap": -0.054806
+        },
+        {
+          "feature": "member_coverage_active",
+          "shap": -0.052619
+        },
+        {
+          "feature": "historical_provider_denial_rate",
+          "shap": -0.02826
+        },
+        {
+          "feature": "diagnosis_category_401",
+          "shap": -0.027704
+        }
+      ]
+    },
+    {
+      "claim_id": 542122280907943,
+      "denial_probability": 0.4865,
+      "risk_band": "MEDIUM",
+      "top_local_factors": [
+        {
+          "feature": "missing_required_auth",
+          "shap": 1.435234
+        },
+        {
+          "feature": "documentation_or_coding_issue",
+          "shap": -0.246963
+        },
+        {
+          "feature": "prior_auth_present",
+          "shap": 0.109778
+        },
+        {
+          "feature": "procedure_count",
+          "shap": -0.104074
+        },
+        {
+          "feature": "provider_network_in_network",
+          "shap": -0.086338
+        },
+        {
+          "feature": "days_since_previous_claim_for_beneficiary",
+          "shap": -0.061259
+        },
+        {
+          "feature": "member_coverage_active",
+          "shap": -0.041733
+        },
+        {
+          "feature": "claim_amount_vs_global_mean",
+          "shap": -0.037681
+        }
+      ]
+    },
+    {
+      "claim_id": 542722280952311,
+      "denial_probability": 0.1342,
+      "risk_band": "LOW",
+      "top_local_factors": [
+        {
+          "feature": "documentation_or_coding_issue",
+          "shap": -0.230466
+        },
+        {
+          "feature": "historical_provider_denial_rate",
+          "shap": -0.175387
+        },
+        {
+          "feature": "missing_required_auth",
+          "shap": -0.173718
+        },
+        {
+          "feature": "provider_network_in_network",
+          "shap": -0.082764
+        },
+        {
+          "feature": "days_since_previous_claim_for_beneficiary",
+          "shap": -0.06334
+        },
+        {
+          "feature": "member_coverage_active",
+          "shap": -0.053287
+        },
+        {
+          "feature": "procedure_count",
+          "shap": -0.04787
+        },
+        {
+          "feature": "claim_amount_vs_global_mean",
+          "shap": -0.032268
+        }
+      ]
+    },
+    {
+      "claim_id": 542082281449297,
+      "denial_probability": 0.4351,
+      "risk_band": "MEDIUM",
+      "top_local_factors": [
+        {
+          "feature": "documentation_or_coding_issue",
+          "shap": 0.720594
+        },
+        {
+          "feature": "coding_mismatch_flag",
+          "shap": 0.228861
+        },
+        {
+          "feature": "missing_required_auth",
+          "shap": -0.177741
+        },
+        {
+          "feature": "procedure_count",
+          "shap": 0.092784
+        },
+        {
+          "feature": "documentation_complete",
+          "shap": -0.085808
+        },
+        {
+          "feature": "claim_duration_days",
+          "shap": 0.084559
+        },
+        {
+          "feature": "provider_network_in_network",
+          "shap": -0.077797
+        },
+        {
+          "feature": "claim_amount_vs_global_mean",
+          "shap": -0.076166
+        }
+      ]
+    },
+    {
+      "claim_id": 542192280840145,
+      "denial_probability": 0.3028,
+      "risk_band": "LOW",
+      "top_local_factors": [
+        {
+          "feature": "provider_network_in_network",
+          "shap": 0.52497
+        },
+        {
+          "feature": "documentation_or_coding_issue",
+          "shap": -0.215932
+        },
+        {
+          "feature": "missing_required_auth",
+          "shap": -0.168147
+        },
+        {
+          "feature": "provider_network_out_of_network",
+          "shap": 0.118596
+        },
+        {
+          "feature": "days_since_previous_claim_for_beneficiary",
+          "shap": -0.050454
+        },
+        {
+          "feature": "member_coverage_active",
+          "shap": -0.049843
+        },
+        {
+          "feature": "historical_provider_denial_rate",
+          "shap": 0.040923
+        },
+        {
+          "feature": "claim_amount_vs_global_mean",
+          "shap": -0.03188
+        }
+      ]
+    }
+  ]
+}
