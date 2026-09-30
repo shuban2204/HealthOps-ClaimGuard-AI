@@ -53,9 +53,37 @@ Outputs are written under `ml/artifacts/`.
 - `ml/artifacts/explainability_samples.json`
 - `ml/artifacts/leakage_audit.json`
 
+## Backend
+
+```bash
+python -m pip install -r backend/requirements.txt
+set PYTHONPATH=backend
+uvicorn app.main:app --app-dir backend --reload
+```
+
+Backend docs: `http://localhost:8000/docs`
+
+Stage 3 endpoints:
+
+- `GET /api/v1/health`
+- `GET /api/v1/claims`
+- `GET /api/v1/claims/{claim_id}`
+- `GET /api/v1/claims/{claim_id}/evidence`
+- `GET /api/v1/analytics/summary`
+- `GET /api/v1/analytics/drivers`
+- `GET /api/v1/model/metrics`
+
+Run backend tests:
+
+```bash
+set PYTHONPATH=backend
+pytest backend/tests -q
+```
+
 ## Project Structure
 
 ```text
+backend/   FastAPI, SQLite repository layer, ML/anomaly services, FAISS retrieval
 data/      Raw CMS files are local only; processed claims CSV is generated
 docs/      Architecture, model, responsible AI, and data provenance notes
 ml/        CMS ingestion, administrative enrichment, diagnostics, and training
