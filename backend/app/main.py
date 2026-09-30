@@ -9,6 +9,7 @@ from app.db import init_db
 from app.routers import analytics, claims, evidence, health, model
 from app.services.analytics_service import AnalyticsService
 from app.services.anomaly_service import AnomalyService
+from app.services.brief_service import BriefService
 from app.services.claim_service import ClaimService
 from app.services.ml_service import MLService
 from app.services.retrieval_service import RetrievalService
@@ -23,6 +24,7 @@ async def lifespan(app: FastAPI):
     app.state.claim_service.initialize_claims()
     app.state.analytics_service = AnalyticsService(app.state.ml_service)
     app.state.retrieval_service = RetrievalService()
+    app.state.brief_service = BriefService()
     yield
 
 

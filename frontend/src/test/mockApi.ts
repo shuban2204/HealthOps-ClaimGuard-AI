@@ -1,4 +1,4 @@
-import type { ClaimDetail, ClaimList, EvidenceResponse, ModelMetrics, Summary } from "../types/api";
+import type { AnalystBrief, ClaimDetail, ClaimList, EvidenceResponse, ModelMetrics, Summary } from "../types/api";
 import { vi } from "vitest";
 
 export const summary: Summary = {
@@ -85,6 +85,17 @@ export const evidence: EvidenceResponse = {
   ]
 };
 
+export const brief: AnalystBrief = {
+  claim_id: "CLM-1",
+  summary: "Claim CLM-1 is prioritized as HIGH risk with a 96.6% estimated denial probability.",
+  rationale: ["Missing required authorization raised denial risk in the model explanation."],
+  recommended_actions: ["Verify whether a valid authorization exists in the source system or supporting attachments."],
+  citations: evidence.sources,
+  limitations: ["The brief summarizes model signals and retrieved evidence; it does not approve, deny, or adjudicate the claim."],
+  disclaimer: "Decision support only. A qualified human reviewer must verify claim facts, policy context, and final disposition.",
+  generated_by: "deterministic-template-v0.1"
+};
+
 export const metrics: ModelMetrics = {
   model_version: "hybrid-cms-admin-0.2.0",
   model_name: "xgboost",
@@ -125,6 +136,7 @@ export function installMockFetch() {
       if (url.includes("/analytics/drivers")) return json(drivers);
       if (url.includes("/model/metrics")) return json(metrics);
       if (url.includes("/claims/CLM-404")) return new Response("not found", { status: 404 });
+      if (url.includes("/claims/CLM-1/brief")) return json(brief);
       if (url.includes("/claims/CLM-1/evidence")) return json(evidence);
       if (url.includes("/claims/CLM-1")) return json(detail);
       if (url.includes("/claims")) return json(claims);

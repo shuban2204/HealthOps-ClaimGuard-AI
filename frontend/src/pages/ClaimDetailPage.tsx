@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import { AnalystBriefPanel } from "../components/AnalystBriefPanel";
 import { AnomalySignal } from "../components/AnomalySignal";
 import { ClaimFacts } from "../components/ClaimFacts";
 import { EvidencePanel } from "../components/EvidencePanel";
@@ -9,7 +10,7 @@ import { PageHeader } from "../components/PageHeader";
 import { RiskBadge } from "../components/RiskBadge";
 import { RiskExplanation } from "../components/RiskExplanation";
 import { ErrorState, Skeleton } from "../components/States";
-import { useClaimDetail, useEvidence } from "../hooks/queries";
+import { useAnalystBrief, useClaimDetail, useEvidence } from "../hooks/queries";
 import { formatCurrency, formatPercent } from "../utils/format";
 import type { SignalKey } from "../utils/signalMap";
 
@@ -17,6 +18,7 @@ export function ClaimDetailPage() {
   const { claimId } = useParams();
   const detail = useClaimDetail(claimId);
   const evidence = useEvidence(claimId);
+  const brief = useAnalystBrief(claimId);
   const [activeSignal, setActiveSignal] = useState<SignalKey | null>(null);
 
   return (
@@ -54,6 +56,12 @@ export function ClaimDetailPage() {
             <div className="center-column">
               <RiskExplanation detail={detail.data} activeSignal={activeSignal} onSignal={setActiveSignal} />
               <AnomalySignal detail={detail.data} />
+              <AnalystBriefPanel
+                brief={brief.data}
+                isFetching={brief.isPending}
+                isError={brief.isError}
+                onGenerate={() => brief.mutate()}
+              />
             </div>
             {evidence.isLoading ? <Skeleton lines={8} /> : <EvidencePanel evidence={evidence.data} activeSignal={activeSignal} />}
           </div>
@@ -62,4 +70,3 @@ export function ClaimDetailPage() {
     </section>
   );
 }
-

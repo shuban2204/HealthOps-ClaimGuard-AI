@@ -66,3 +66,14 @@ class EvidenceResponse(BaseModel):
     claim_id: str
     query: str
     sources: list[EvidenceSource]
+
+
+class AnalystBriefResponse(BaseModel):
+    claim_id: str
+    summary: str
+    rationale: list[str]
+    recommended_actions: list[str]
+    citations: list[EvidenceSource]
+    limitations: list[str]
+    disclaimer: str
+    generated_by: str

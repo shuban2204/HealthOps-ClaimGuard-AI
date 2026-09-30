@@ -28,6 +28,20 @@ def test_claim_detail_contains_prediction_and_anomaly(client):
     assert "anomaly_score" in payload["anomaly"]
 
 
+def test_claim_brief_is_grounded_and_non_adjudicative(client):
+    first = client.get("/api/v1/claims?limit=1").json()["items"][0]
+    response = client.get(f"/api/v1/claims/{first['claim_id']}/brief")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["claim_id"] == first["claim_id"]
+    assert payload["summary"]
+    assert payload["rationale"]
+    assert payload["recommended_actions"]
+    assert payload["citations"]
+    assert "Decision support only" in payload["disclaimer"]
+    assert payload["generated_by"] == "deterministic-template-v0.1"
+
+
 def test_claim_not_found_error(client):
     response = client.get("/api/v1/claims/NO_SUCH_CLAIM")
     assert response.status_code == 404
@@ -55,4 +69,3 @@ def test_risk_band_mapping_uses_selected_threshold():
     assert risk_band(0.1, 0.2729) == "LOW"
     assert risk_band(0.4, 0.2729) == "MEDIUM"
     assert risk_band(0.8, 0.2729) == "HIGH"
-

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Stage 3 backend is a FastAPI application under `/api/v1`. It provides denial-risk prediction, review prioritization, unusual claim detection, analytics, model metrics, and policy evidence retrieval for the CMS DE-SynPUF hybrid dataset.
+The backend is a FastAPI application under `/api/v1`. It provides denial-risk prediction, review prioritization, unusual claim detection, analytics, model metrics, policy evidence retrieval, and deterministic analyst brief generation for the CMS DE-SynPUF hybrid dataset.
 
 ## Service Boundaries
 
@@ -11,6 +11,7 @@ The Stage 3 backend is a FastAPI application under `/api/v1`. It provides denial
 - `ClaimService` seeds processed claims into SQLite and returns paginated claim detail.
 - `AnalyticsService` reads aggregate counts and model driver summaries.
 - `RetrievalService` loads synthetic demonstration policy documents, embeds sections with `sentence-transformers/all-MiniLM-L6-v2`, and indexes them with FAISS.
+- `BriefService` creates a deterministic analyst brief from claim facts, model explanations, unusual-claim signals, and retrieved evidence.
 - `ClaimsRepository` isolates SQLite persistence and query behavior.
 
 ## Startup
@@ -46,7 +47,11 @@ Risk bands use the Stage 2 validation-selected threshold:
 
 ## Retrieval Design
 
-Policy files are fictional demonstration policies. Each section becomes a stable source chunk such as `prior_authorization:PA-03`. Claim-to-policy queries are deterministic and use claim state plus top explanation factors. No LLM is used in Stage 3.
+Policy files are fictional demonstration policies. Each section becomes a stable source chunk such as `prior_authorization:PA-03`. Claim-to-policy queries are deterministic and use claim state plus top explanation factors.
+
+## Analyst Briefs
+
+Briefs are deterministic and do not call an external LLM. The brief endpoint returns a summary, rationale, recommended reviewer actions, top policy citations, limitations, and a decision-support disclaimer. It is intended to help reviewers prepare an investigation, not to adjudicate a claim.
 
 ## Policy Disclaimer
 
@@ -58,7 +63,7 @@ Policy documents are synthetic and do not represent CMS, Evernorth, Cigna, or an
 - `GET /api/v1/claims`
 - `GET /api/v1/claims/{claim_id}`
 - `GET /api/v1/claims/{claim_id}/evidence`
+- `GET /api/v1/claims/{claim_id}/brief`
 - `GET /api/v1/analytics/summary`
 - `GET /api/v1/analytics/drivers`
 - `GET /api/v1/model/metrics`
-

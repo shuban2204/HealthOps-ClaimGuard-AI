@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -45,6 +45,12 @@ describe("ClaimGuard frontend", () => {
     expect(await screen.findByText("Missing required authorization")).toBeInTheDocument();
     expect(await screen.findByText("Unusual Claim Signal")).toBeInTheDocument();
     expect(await screen.findByText("Prior Authorization Policy")).toBeInTheDocument();
+    const generateButton = screen.getByRole("button", { name: /generate brief/i });
+    expect(generateButton).not.toBeDisabled();
+    fireEvent.click(generateButton);
+    await waitFor(() => expect(fetch).toHaveBeenCalledWith(expect.stringContaining("/claims/CLM-1/brief")));
+    await waitFor(() => expect(screen.getByText(/Claim CLM-1 is prioritized as HIGH risk/i)).toBeInTheDocument());
+    expect(screen.getByText(/Decision support only/i)).toBeInTheDocument();
   });
 
   it("handles 404 claim state professionally", async () => {

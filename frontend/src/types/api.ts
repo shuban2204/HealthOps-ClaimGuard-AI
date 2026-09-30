@@ -81,6 +81,17 @@ export interface EvidenceResponse {
   sources: EvidenceSource[];
 }
 
+export interface AnalystBrief {
+  claim_id: string;
+  summary: string;
+  rationale: string[];
+  recommended_actions: string[];
+  citations: EvidenceSource[];
+  limitations: string[];
+  disclaimer: string;
+  generated_by: string;
+}
+
 export interface MetricSplit {
   roc_auc: number;
   pr_auc: number;
@@ -112,4 +123,3 @@ export interface Driver {
   feature: string;
   importance: number;
 }
-

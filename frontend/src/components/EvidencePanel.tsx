@@ -14,7 +14,7 @@ export function EvidencePanel({ evidence, activeSignal }: { evidence?: EvidenceR
               <div>
                 <strong>{source.title}</strong>
                 <small>
-                  {source.source_id} · {source.section}
+                  {source.source_id} - {source.section}
                 </small>
               </div>
             </summary>

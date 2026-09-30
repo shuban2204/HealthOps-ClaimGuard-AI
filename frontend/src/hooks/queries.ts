@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { analyticsApi } from "../api/analytics";
 import { claimsApi } from "../api/claims";
@@ -33,7 +33,13 @@ export function useEvidence(claimId?: string) {
   });
 }
 
+export function useAnalystBrief(claimId?: string) {
+  return useMutation({
+    mutationKey: ["brief", claimId],
+    mutationFn: () => claimsApi.brief(claimId ?? "")
+  });
+}
+
 export function useModelMetrics() {
   return useQuery({ queryKey: ["model-metrics"], queryFn: modelApi.metrics });
 }
-

@@ -69,6 +69,7 @@ Stage 3 endpoints:
 - `GET /api/v1/claims`
 - `GET /api/v1/claims/{claim_id}`
 - `GET /api/v1/claims/{claim_id}/evidence`
+- `GET /api/v1/claims/{claim_id}/brief`
 - `GET /api/v1/analytics/summary`
 - `GET /api/v1/analytics/drivers`
 - `GET /api/v1/model/metrics`

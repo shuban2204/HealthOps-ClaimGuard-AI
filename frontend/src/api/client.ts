@@ -1,4 +1,4 @@
-import type { ClaimDetail, ClaimFilters, ClaimList, Driver, EvidenceResponse, ModelMetrics, Summary } from "../types/api";
+import type { AnalystBrief, ClaimDetail, ClaimFilters, ClaimList, Driver, EvidenceResponse, ModelMetrics, Summary } from "../types/api";
 
 const BASE_URL = "/api/v1";
 
@@ -28,6 +28,6 @@ export const api = {
   claims: (filters: ClaimFilters = {}) => getJson<ClaimList>(`/claims${toQuery({ limit: 50, offset: 0, ...filters })}`),
   claim: (claimId: string) => getJson<ClaimDetail>(`/claims/${encodeURIComponent(claimId)}`),
   evidence: (claimId: string) => getJson<EvidenceResponse>(`/claims/${encodeURIComponent(claimId)}/evidence`),
+  brief: (claimId: string) => getJson<AnalystBrief>(`/claims/${encodeURIComponent(claimId)}/brief`),
   metrics: () => getJson<ModelMetrics>("/model/metrics")
 };
-
