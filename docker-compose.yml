@@ -6,14 +6,33 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - CLAIMGUARD_MODEL_VERSION=local-0.1.0
+      CLAIMGUARD_MODEL_VERSION: ${CLAIMGUARD_MODEL_VERSION:-hybrid-cms-admin-0.2.0}
+      CLAIMGUARD_DATABASE_PATH: /app/data/claimguard.db
+      CLAIMGUARD_DATA_PATH: /app/data/sample_claims.csv
+      CLAIMGUARD_POLICY_DIR: /app/data/policies
+      CLAIMGUARD_MODEL_PATH: /app/ml/artifacts/classifier.joblib
+      CLAIMGUARD_ANOMALY_PATH: /app/ml/artifacts/anomaly_detector.joblib
+      CLAIMGUARD_METRICS_PATH: /app/ml/artifacts/metrics.json
+      CLAIMGUARD_EXPLAINABILITY_PATH: /app/ml/artifacts/explainability_samples.json
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=5).read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
 
   frontend:
     build:
       context: .
       dockerfile: frontend/Dockerfile
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     ports:
       - "5173:80"
-
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1/ >/dev/null"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s

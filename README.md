@@ -81,6 +81,54 @@ set PYTHONPATH=backend
 pytest backend/tests -q
 ```
 
+## Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev -- --host 127.0.0.1
+```
+
+Frontend app: `http://localhost:5173`
+
+Run frontend checks:
+
+```bash
+cd frontend
+npm test
+npm run build
+```
+
+## Docker Compose
+
+Train the ML artifacts first so `ml/artifacts/classifier.joblib` and `ml/artifacts/anomaly_detector.joblib` exist locally, then run:
+
+```bash
+docker compose build
+docker compose up
+```
+
+Compose exposes:
+
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:8000`
+- Health: `http://localhost:8000/api/v1/health`
+
+The frontend container proxies `/api/*` to the backend container. Both services include health checks.
+
+## Make Targets
+
+```bash
+make install-backend
+make train
+make test-backend
+make install-frontend
+make test-frontend
+make build-frontend
+make docker-build
+make docker-up
+```
+
 ## Project Structure
 
 ```text
